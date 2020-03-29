@@ -94,12 +94,16 @@ const addBinary = (a, b) => {
   while (y) {
     const answer = x ^ y;
     const carry = (x & y) << 1;
+    console.log("x", x);
+    console.log("y", y);
 
     x = answer;
     y = carry;
+    console.log("answer", answer);
+    console.log("carry", carry);
   }
 
   return x.toString(2);
-}
+};
 
 console.log(addBinary("1010", "1111"));
