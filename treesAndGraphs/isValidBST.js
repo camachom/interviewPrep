@@ -10,20 +10,40 @@
  * @return {boolean}
  */
 
-var isValidBST = function(root, lower, upper) {
-  if (!root) {
-    return true;
+// var isValidBST = function(root, min = null, max = null) {
+//   if (!root) {
+//     return true;
+//   }
+//
+//   if (min !== null && root.val <= min) {
+//     return false;
+//   }
+//
+//   if (max !== null && root.val >= max) {
+//     return false;
+//   }
+//
+//   return (
+//     isValidBST(root.left, min, root.val) &&
+//     isValidBST(root.right, root.val, max)
+//   );
+// };
+
+const isValidBST = root => {
+  const nodes = [];
+  const queue = [root];
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    nodes.push(node);
+
+    if (node.right) {
+      queue.push(node.right);
+    }
+    if (node.left) {
+      queue.push(node.left);
+    }
   }
 
-  if (root.left && root.left.val >= root.val) {
-    return false;
-  }
-
-  if (root.right && root.right.val <= root.val) {
-    return false;
-  }
-
-  return isValidBST(root.left, root) && isValidBST(root.right, root);
+  return nodes;
 };
-
-// def find_earliest_ancestor(pairs, node):     parent_graph = defaultdict(list)     for parent, child in pairs:         parent_graph[child].append(parent)          earliest_ancestor, max_distance = None, 0     stack = [(node, 0)]     while stack:         current_node, distance = stack.pop()         for parent in parent_graph[current_node]:             if distance + 1 > max_distance:                 earliest_ancestor, max_distance = parent, distance + 1             stack.append((parent, distance + 1))     return earliest_ancestor

@@ -10,7 +10,7 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var isPalindrome = function(head) {
+var isPalindrome = function (head) {
   if (!head) {
     return true;
   }
@@ -22,11 +22,11 @@ var isPalindrome = function(head) {
     node = node.next;
   }
 
-  return values.join('') === values.reverse().join('');
+  return values.join("") === values.reverse().join("");
 };
 
 class Node {
-  constructor (val) {
+  constructor(val) {
     this.val = val;
     this.next = null;
   }
@@ -36,7 +36,7 @@ class Node {
   }
 }
 
-const head = new Node(1)
+const head = new Node(1);
 head.setNext(new Node(2));
 
 console.log(head, isPalindrome(head));
